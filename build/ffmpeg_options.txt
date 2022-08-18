@@ -5,20 +5,20 @@
 --disable-autodetect
 --disable-amf
 --enable-bzlib
---enable-cuda
---enable-cuvid
+--disable-cuda
+--disable-cuvid
 --enable-d3d12va
 --enable-d3d11va
 --enable-dxva2
 --enable-iconv
 --enable-lzma
---enable-nvenc
+--disable-nvenc
 --enable-schannel
 --enable-zlib
 --enable-sdl2
---enable-ffnvcodec
---enable-nvdec
---enable-cuda-llvm
+--disable-ffnvcodec
+--disable-nvdec
+--disable-cuda-llvm
 --disable-decoder=aac
 --disable-decoder=aac_fixed
 --disable-decoder=aac_latm
@@ -116,6 +116,6 @@
 # Full plus options that add shared dependencies
 --enable-opencl
 --enable-opengl
---enable-cuda-nvcc
---enable-libnpp
+--disable-cuda-nvcc
+--disable-libnpp
 --enable-libopenh264
