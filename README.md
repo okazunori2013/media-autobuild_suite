@@ -8,7 +8,7 @@ Most git sources in the suite use GitHub, so if it's down, it's probably useless
 
 ## Download
 
-**[Click here to download latest version](https://github.com/m-ab-s/media-autobuild_suite/archive/master.zip)**
+**[Click here to download latest version](https://github.com/okazunori2013/media-autobuild_suite/archive/master.zip)**
 
 For information about the compiler environment see the wiki, there you also have a example of how to compile your own tools.
 
