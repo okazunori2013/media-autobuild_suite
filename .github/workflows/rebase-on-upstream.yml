@@ -2,7 +2,7 @@ name: Rebase on Upstream
 
 on:
   schedule:
-  - cron: "0 11 * * *"  # run every day an hour before regular build
+  - cron: "15 11 * * *"  
   workflow_dispatch:    # run manually
 
 jobs:
@@ -12,14 +12,5 @@ jobs:
     - uses: actions/checkout@master
       with:
         fetch-depth: 0
+        persist-credentials: false
     - uses: yt-dlp/rebase-upstream-action@master
-    - uses: actions/checkout@master
-  rebase2:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-      with:
-        ref: no-gpu
-        fetch-depth: 0
-    - uses: yt-dlp/rebase-upstream-action@master
-    - uses: actions/checkout@master    
