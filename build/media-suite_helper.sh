@@ -1690,7 +1690,7 @@ do_pacman_remove() {
 do_prompt() {
     # from http://superuser.com/a/608509
     while read -r -s -e -t 0.1; do :; done
-    read -r -p "$1" ret
+    #read -r -p "$1" ret
 }
 
 do_autoreconf() {
