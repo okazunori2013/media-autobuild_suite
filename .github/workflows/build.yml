@@ -1,0 +1,38 @@
+name: build
+
+on:
+  pull_request:
+  push:
+    branches: 
+      - master
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: install dependencies
+        run: |
+          fsutil 8dot3name set 0
+      - name: cuda-toolkit
+        uses: Jimver/cuda-toolkit@master
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: run media-autobuild
+        continue-on-error: true
+        id: media-autobuild
+        shell: cmd
+        run: |
+          ./media-autobuild_suite.bat
+      - name: 7z
+        shell: cmd
+        run: |
+          7z.exe a ffmpeg.7z ./local64 ./build/*.zip
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: media-autobuild_suite
+          path: ffmpeg.7z
+          retention-days: 4
+      - name: error handling    
+        if: ${{ steps.media-autobuild.outcome == 'failure' }}
+        run:  exit 1
