@@ -2904,3 +2904,4 @@ do_simple_print -p "${green}Compilation successful.${reset}"
 do_simple_print -p "${green}This window will close automatically in 5 seconds.${reset}"
 find $LOCALBUILDDIR -maxdepth 3 -type d -name "*-git" -exec rm -rf {} +
 sleep 5
+exit 0
