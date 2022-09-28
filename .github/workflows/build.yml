@@ -8,15 +8,30 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, windows-2019]  
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: install dependencies
+      - name: Preparation
+        shell: cmd
         run: |
           fsutil 8dot3name set 0
+          echo "Adding GNU tar to PATH"
+          echo C:\Program Files\Git\usr\bin>>"%GITHUB_PATH%"
       - name: cuda-toolkit
         uses: Jimver/cuda-toolkit@master
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3 
+      - name: Cache
+        uses: actions/cache@main
+        with: 
+          path: msys64
+          key: msys-${{ hashFiles('./build/media-suite_compile.sh') }}
+          restore-keys: |
+             msys-${{ hashFiles('./build/media-suite_compile.sh') }}
+             msys-
       - name: run media-autobuild
         continue-on-error: true
         id: media-autobuild
