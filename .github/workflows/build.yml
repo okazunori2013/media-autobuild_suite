@@ -24,6 +24,11 @@ jobs:
         uses: Jimver/cuda-toolkit@master
       - name: Checkout
         uses: actions/checkout@v3 
+      - name: Patch bash scripts
+        shell: pwsh
+        run: |
+          sed -i 's/do_prompt /echo /g' build/media-suite_helper.sh build/media-suite_compile.sh
+          sed -i 's/read.*yn/yn=y/g' build/media-suite_update.sh
       - name: Cache
         uses: actions/cache@main
         with: 
