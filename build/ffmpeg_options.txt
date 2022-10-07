@@ -26,6 +26,7 @@
 --enable-gmp
 --enable-libmp3lame
 --enable-libopus
+--disable-encoder=vorbis
 --enable-libvorbis
 --enable-libvpx
 --enable-libx264
