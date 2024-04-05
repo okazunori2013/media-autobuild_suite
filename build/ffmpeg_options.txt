@@ -42,7 +42,8 @@
 --enable-libass
 --enable-libbluray
 --enable-libfreetype
---enable-libmfx
+#--enable-libmfx
+--enable-libvpl
 --enable-libmysofa
 --enable-libopencore-amrnb
 --enable-libopencore-amrwb
